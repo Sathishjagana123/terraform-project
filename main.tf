@@ -1,52 +1,61 @@
 #this file consists of code for instances and sg
 provider "aws" {
 region = "us-east-1"
-access_key = ""
-secret_key = ""
+access_key = "AKIAXQUTZL5J7H2CQTIG"
+secret_key = "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"
 }
 
 resource "aws_instance" "one" {
-  ami             = "ami-03c7d01cf4dedc891"
+  ami             = "ami-04823729c75214919"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "n-virgenia"
   vpc_security_group_ids = [aws_security_group.five.id]
   availability_zone = "us-east-1a"
-  user_data       = <<EOF
-#!/bin/bash
-sudo -i
-yum install httpd -y
-systemctl start httpd
-chkconfig httpd on
-echo "hai all this is my app created by terraform infrastructurte by raham sir server-1" > /var/www/html/index.html
-EOF
+  
+  user_data = <<-EOF
+    #!/bin/bash
+    sudo -i
+    yum install -y httpd tree
+
+    systemctl start httpd
+    chkconfig httpd on
+
+    # Include your 4000 lines of code here
+    $(cat C:/Users/user/Desktop/terraform htmls/index.html)
+    EOF
+
   tags = {
     Name = "web-serverr-1"
   }
 }
-
-resource "aws_instance" "two" {
-  ami             = "ami-03c7d01cf4dedc891"
+resource "aws_instance" "one" {
+  ami             = "ami-04823729c75214919"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "n-virgenia"
   vpc_security_group_ids = [aws_security_group.five.id]
   availability_zone = "us-east-1b"
-  user_data       = <<EOF
-#!/bin/bash
-sudo -i
-yum install httpd -y
-systemctl start httpd
-chkconfig httpd on
-echo "hai all this is my website created by terraform infrastructurte by raham sir server-2" > /var/www/html/index.html
-EOF
+  
+  user_data = <<-EOF
+    #!/bin/bash
+    sudo -i
+    yum install -y httpd tree
+
+    systemctl start httpd
+    chkconfig httpd on
+
+    # Include your 4000 lines of code here
+    $(cat C:\Users\user\Desktop\terraform htmls\CYIENT)
+    EOF
+
   tags = {
-    Name = "web-server-2"
+    Name = "web-serverr-2"
   }
 }
 
 resource "aws_instance" "three" {
-  ami             = "ami-03c7d01cf4dedc891"
+  ami             = "ami-04823729c75214919"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "n-virgenia"
   vpc_security_group_ids = [aws_security_group.five.id]
   availability_zone = "us-east-1a"
   tags = {
@@ -55,9 +64,9 @@ resource "aws_instance" "three" {
 }
 
 resource "aws_instance" "four" {
-  ami             = "ami-03c7d01cf4dedc891"
+  ami             = "ami-04823729c75214919"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "n-virgenia"
   vpc_security_group_ids = [aws_security_group.five.id]
   availability_zone = "us-east-1b"
   tags = {
@@ -90,7 +99,7 @@ resource "aws_security_group" "five" {
 }
 
 resource "aws_s3_bucket" "six" {
-  bucket = "rahamshaikterra77889900prodenv"
+  bucket = "satishterrabucketjagana"
 }
 
 resource "aws_iam_user" "seven" {
@@ -101,7 +110,7 @@ name = each.value
 variable "user_names" {
 description = "*"
 type = set(string)
-default = ["user1", "user2", "user3", "user4"]
+default = ["bhavitha", "shirisha", "pavani", "chinni"]
 }
 
 resource "aws_ebs_volume" "eight" {
